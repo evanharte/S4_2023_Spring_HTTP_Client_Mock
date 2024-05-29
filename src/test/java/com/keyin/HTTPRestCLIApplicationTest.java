@@ -36,4 +36,16 @@ public class HTTPRestCLIApplicationTest {
 
         Assertions.assertTrue(httpRestCLIApplicationUnderTest.generateAirportReport().contains("YYT"));
     }
+
+    @Test
+    public void testGenerateAirportReportWithError() {
+        HTTPRestCLIApplication httpRestCLIApplicationUnderTest = new HTTPRestCLIApplication();
+
+        RESTClient restClient = new RESTClient();
+        restClient.setServerURL("http://localhost:8080/airports");
+
+        httpRestCLIApplicationUnderTest.setRestClient(restClient);
+
+        Assertions.assertTrue(httpRestCLIApplicationUnderTest.generateAirportReport().contains("YYT"));
+    }
 }
